@@ -1,7 +1,10 @@
 import { NavLink } from "@remix-run/react";
 import "./welcome.css";
+import { motion, useScroll } from "framer-motion";
 
 export default function Welcome() {
+  const { scrollYProgress } = useScroll();
+
   const navBar = [
     { name: "Markets", route: "/markets" },
     { name: "Swap", route: "/swap" },
@@ -10,9 +13,28 @@ export default function Welcome() {
     { name: "Legal", route: "/legal" },
     { name: "Support", route: "/support" },
   ];
+
   const handleWalletConnect = async () => {
     const resp = await window.diam.connect();
     console.log(resp);
+  };
+
+  const cardVariants = {
+    offscreen: {
+      y: 100,
+      x: -100,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      x: -100,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.8,
+      },
+    },
   };
 
   return (
@@ -45,10 +67,14 @@ export default function Welcome() {
           </ul>
           <button onClick={handleWalletConnect}>Connect Wallet</button>
         </div>
+        <motion.div
+          className="progress-bar"
+          style={{ scaleX: scrollYProgress }}
+        />
       </header>
       <section className="main_section">
-        <div className="hero_section">
-          <div className="hero_section_left">
+        <div className="section">
+          <div className="section_left">
             <div className="hero_desc_section">
               <h2>A better way to trade</h2>
               <p>
@@ -60,13 +86,52 @@ export default function Welcome() {
               <button>Explore Stellarx</button>
             </div>
           </div>
-          <div className="hero_section_right">
+          <div className="section_right">
             <img
               src="https://www.stellarx.com/bf96c308f0a32e9c4456.png"
               alt="StellarX desktop"
             />
           </div>
         </div>
+        <motion.div
+          className="section interest_section"
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.8 }}
+        >
+          <div className="interest_details">
+            <h2>Earn interest on Stellar X</h2>
+            <p>
+              To earn on your assets, you need to provide liquidity to any pools
+              with attractive APYs. Liquidity providers collect extra rewards
+              after locking assets in pools.
+            </p>
+            <motion.div variants={cardVariants}>
+              <img src="https://www.stellarx.com/d4d9566f05644971c529.png" />
+            </motion.div>
+          </div>
+        </motion.div>
+        <section className="section">
+          <div className="section_right">
+            <img src="https://www.stellarx.com/c139ba43b42ec775c153.png"></img>
+          </div>
+          <div className="section_left buy_crypto">
+            <div className="buy_crypto_section">
+              <h2>Buy crypto</h2>
+              <p>
+                StellarX is a powerful decentralized trading platform built on
+                the Stellar network. Connect your wallet and start trading every
+                asset class imaginable in seconds. Access AMMs to earn passive
+                income, on & off ramp with ease.
+              </p>
+              <div className="buy_crypto_buttons">
+                <button>Buy Diam</button>
+                <button>Buy Bitcoin</button>
+                <button>Buy Others</button>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </div>
   );
