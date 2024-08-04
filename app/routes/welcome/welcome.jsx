@@ -19,15 +19,61 @@ export default function Welcome() {
     console.log(resp);
   };
 
-  const cardVariants = {
+  const fromRightVarients = {
     offscreen: {
-      y: 100,
-      x: -100,
       opacity: 0,
     },
     onscreen: {
       y: 0,
       x: -100,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.8,
+      },
+    },
+  };
+
+  const fromDownVarients = {
+    offscreen: {
+      y: 100,
+      x: 0,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.8,
+      },
+    },
+  };
+
+  const fromDownButtonVarients = {
+    offscreen: {
+      opacity: 0,
+    },
+    onscreen: {
+      animate: { x: 100 },
+      transition: { delay: 0.1 },
+
+      opacity: 1,
+    },
+  };
+
+  const fromLeftVarients = {
+    offscreen: {
+      y: 0,
+      x: 0,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      x: 100,
       opacity: 1,
       transition: {
         type: "spring",
@@ -72,8 +118,8 @@ export default function Welcome() {
           style={{ scaleX: scrollYProgress }}
         />
       </header>
-      <section className="main_section">
-        <div className="section">
+      <div className="main_section">
+        <section className="section first_sec">
           <div className="section_left">
             <div className="hero_desc_section">
               <h2>A better way to trade</h2>
@@ -86,35 +132,49 @@ export default function Welcome() {
               <button>Explore Stellarx</button>
             </div>
           </div>
-          <div className="section_right">
-            <img
-              src="https://www.stellarx.com/bf96c308f0a32e9c4456.png"
-              alt="StellarX desktop"
-            />
-          </div>
-        </div>
-        <motion.div
-          className="section interest_section"
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.8 }}
-        >
-          <div className="interest_details">
+          <motion.div
+            className="section_right"
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            <motion.div variants={fromRightVarients}>
+              <img
+                src="https://www.stellarx.com/bf96c308f0a32e9c4456.png"
+                alt="StellarX desktop"
+              />
+            </motion.div>
+          </motion.div>
+        </section>
+        <section className="section interest_section">
+          <motion.div
+            className="interest_details"
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+          >
             <h2>Earn interest on Stellar X</h2>
             <p>
               To earn on your assets, you need to provide liquidity to any pools
               with attractive APYs. Liquidity providers collect extra rewards
               after locking assets in pools.
             </p>
-            <motion.div variants={cardVariants}>
+            <motion.div variants={fromDownVarients}>
               <img src="https://www.stellarx.com/d4d9566f05644971c529.png" />
             </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </section>
         <section className="section">
-          <div className="section_right">
-            <img src="https://www.stellarx.com/c139ba43b42ec775c153.png"></img>
-          </div>
+          <motion.div
+            className="section_right"
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            <motion.div className="div" variants={fromLeftVarients}>
+              <img src="https://www.stellarx.com/ae000350ee5cf355488a.png" />
+            </motion.div>
+          </motion.div>
           <div className="section_left buy_crypto">
             <div className="buy_crypto_section">
               <h2>Buy crypto</h2>
@@ -124,15 +184,88 @@ export default function Welcome() {
                 asset class imaginable in seconds. Access AMMs to earn passive
                 income, on & off ramp with ease.
               </p>
-              <div className="buy_crypto_buttons">
-                <button>Buy Diam</button>
-                <button>Buy Bitcoin</button>
-                <button>Buy Others</button>
-              </div>
+              <motion.div
+                className="buy_crypto_buttons"
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.8 }}
+              >
+                <motion.div variants={fromDownButtonVarients}>
+                  <button>Buy Diam</button>
+                </motion.div>
+                <motion.div variants={fromDownButtonVarients}>
+                  <button>Buy Bitcoin</button>
+                </motion.div>
+                <motion.div variants={fromDownButtonVarients}>
+                  <button>Buy Others</button>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </section>
-      </section>
+        <section className="section">
+          <div className="section_left">
+            <div
+              className="hero_desc_section"
+              style={{ height: "35%", marginBottom: "0vh" }}
+            >
+              <h2>Swap Assets</h2>
+              <p>
+                Exchange any amount of assets at the best rates. There’s no one
+                in the middle. You always have sole control of your assets.
+              </p>
+              <button>Swap</button>
+            </div>
+          </div>
+          <motion.div
+            className="section_right"
+            style={{ marginBottom: "-10vh" }}
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            <motion.div className="div" variants={fromRightVarients}>
+              <img
+                src="https://www.stellarx.com/e679a181b2947a80d95c.png"
+                alt="Trades desktop"
+              />
+            </motion.div>
+          </motion.div>
+        </section>
+        <section className="section">
+          <motion.div
+            className="section_right"
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            <motion.div variants={fromLeftVarients}>
+              <img src="https://www.stellarx.com/c139ba43b42ec775c153.png"></img>
+            </motion.div>
+          </motion.div>
+          <div className="section_left buy_crypto">
+            <div
+              className="buy_crypto_section"
+              style={{ width: "70%", height: "30%" }}
+            >
+              <h2>Deposit and withdraw, fiat and crypto</h2>
+              <p>
+                You can move your funds in and out right from our app. Convert
+                fiat tokens to money in your bank account. Swap crypto tokens
+                for their native coins. All from your wallet.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section className="section" style={{ flexDirection: "column" }}>
+          <div className="final_section">
+            <div className="final_section_desc">
+              <h2>Start earning today</h2>
+              <button>Connect Wallet</button>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

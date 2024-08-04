@@ -7,6 +7,17 @@
   overflow-y: auto;
 }
 
+.progress_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  width: 1000px;
+  background: red;
+  transform-origin: 0%;
+  z-index: 99;
+}
 .header {
   display: flex;
   flex: 0.06;
@@ -16,6 +27,14 @@
   top: 0;
   background-color: white;
   z-index: 1000;
+
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: red;
+  transform-origin: 0%; */
 }
 
 .header_left {
@@ -102,6 +121,9 @@
 .section:nth-child(2) {
   background-color: rgb(243, 241, 239);
 }
+.section:nth-child(4) {
+  background-color: rgb(243, 241, 239);
+}
 
 .section_left {
   display: flex;
@@ -117,7 +139,7 @@
   width: 40%;
   height: 50%;
   align-items: flex-start;
-  justify-content: space-evenly;
+  gap: 4vh;
   margin-bottom: 10vh;
   margin-left: 15vh;
 }
@@ -177,6 +199,7 @@ h2 {
   width: 55%;
   height: 80%;
   gap: 2vh;
+  align-items: center;
 }
 
 .interest_details img {
@@ -193,6 +216,7 @@ h2 {
 
 .interest_details p {
   color: rgb(66, 67, 89);
+  text-align: center;
 }
 
 .buy_crypto {
@@ -205,7 +229,7 @@ h2 {
   width: 60%;
   height: 40%;
   align-items: flex-start;
-  justify-content: space-evenly;
+  gap: 4vh;
   margin-bottom: 10vh;
   margin-left: 5vw;
 }
@@ -252,4 +276,63 @@ h2 {
   padding: 12px 24px;
   color: rgb(49, 49, 71);
   background-color: rgb(255, 210, 87);
+}
+
+.final_section {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background: url("https://www.stellarx.com/b4a9806a817ed00d8e17.png") left top /
+      15% no-repeat,
+    url("https://www.stellarx.com/b7419c0c9cb8280c2df9.png") right bottom / 15%
+      no-repeat,
+    url("https://www.stellarx.com/7726786c084a8eff933c.png") center center /
+      620px no-repeat,
+    rgb(247, 245, 244);
+  justify-content: center;
+}
+
+.final_section_desc {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 25%;
+  align-items: center;
+  gap: 6vh;
+  justify-content: center;
+}
+
+.final_section_desc h2 {
+  font-size: 3.5rem;
+  line-height: 2.5rem;
+}
+
+.final_section_desc button {
+  text-transform: capitalize;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1562rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  transition: all 0.15s ease 0s;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  background-color: rgb(33, 33, 51);
+  border-radius: 4px;
+  color: rgb(250, 249, 247);
+  padding: 20px 106px;
+  cursor: pointer;
+}
+
+.final_section_desc button:hover {
+  background-color: rgb(49, 49, 71);
+  color: white;
+}
+.first_sec {
+  background: url("https://www.stellarx.com/593c828408fb7e13526e.png") left top
+      210px / 14% no-repeat,
+    url("https://www.stellarx.com/4d404170dc9c2905fd62.png") right top / 20%
+      no-repeat,
+    rgb(250, 249, 247);
 }
