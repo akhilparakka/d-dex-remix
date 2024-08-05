@@ -1,9 +1,12 @@
-import { NavLink } from "@remix-run/react";
-import "./welcome.css";
+import { NavLink, useNavigate } from "@remix-run/react";
+import welcomeCssRef from "../styles/welcome.css?url";
 import { motion, useScroll } from "framer-motion";
+
+export const links = () => [{ rel: "stylesheet", href: welcomeCssRef }];
 
 export default function Welcome() {
   const { scrollYProgress } = useScroll();
+  const navigate = useNavigate();
 
   const navBar = [
     { name: "Markets", route: "/markets" },
@@ -17,6 +20,9 @@ export default function Welcome() {
   const handleWalletConnect = async () => {
     const resp = await window.diam.connect();
     console.log(resp);
+    if (resp.status === 200) {
+      navigate("/home");
+    }
   };
 
   const fromRightVarients = {
@@ -148,6 +154,7 @@ export default function Welcome() {
         </section>
         <section className="section interest_section">
           <motion.div
+            id="interest_details"
             className="interest_details"
             initial="offscreen"
             whileInView="onscreen"

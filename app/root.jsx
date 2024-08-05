@@ -1,7 +1,6 @@
 // app/root.jsx
 import { Links, Meta, Outlet, Scripts } from "@remix-run/react";
 import appStylesHref from "./app.css?url";
-import Welcome from "./routes/welcome/welcome";
 
 export const links = () => [{ rel: "stylesheet", href: appStylesHref }];
 
@@ -14,7 +13,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Welcome />
         <Outlet />
         <Scripts />
       </body>
