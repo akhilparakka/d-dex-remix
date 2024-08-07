@@ -1,11 +1,10 @@
 import { NavLink, useNavigate } from "@remix-run/react";
 import welcomeCssRef from "../styles/welcome.css?url";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 
 export const links = () => [{ rel: "stylesheet", href: welcomeCssRef }];
 
 export default function Welcome() {
-  const { scrollYProgress } = useScroll();
   const navigate = useNavigate();
 
   const navBar = [
@@ -19,8 +18,8 @@ export default function Welcome() {
 
   const handleWalletConnect = async () => {
     const resp = await window.diam.connect();
-    console.log(resp);
     if (resp.status === 200) {
+      localStorage.setItem("diam_publicKeys", JSON.stringify(resp.message));
       navigate("/home");
     }
   };
@@ -64,10 +63,8 @@ export default function Welcome() {
       opacity: 0,
     },
     onscreen: {
-      animate: { x: 100 },
-      transition: { delay: 0.1 },
-
       opacity: 1,
+      transition: { delay: 0.1 },
     },
   };
 
@@ -119,10 +116,6 @@ export default function Welcome() {
           </ul>
           <button onClick={handleWalletConnect}>Connect Wallet</button>
         </div>
-        <motion.div
-          className="progress-bar"
-          style={{ scaleX: scrollYProgress }}
-        />
       </header>
       <div className="main_section">
         <section className="section first_sec">
@@ -142,7 +135,7 @@ export default function Welcome() {
             className="section_right"
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <motion.div variants={fromRightVarients}>
               <img
@@ -158,7 +151,7 @@ export default function Welcome() {
             className="interest_details"
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <h2>Earn interest on Stellar X</h2>
             <p>
@@ -176,7 +169,7 @@ export default function Welcome() {
             className="section_right"
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <motion.div className="div" variants={fromLeftVarients}>
               <img src="https://www.stellarx.com/ae000350ee5cf355488a.png" />
@@ -195,7 +188,7 @@ export default function Welcome() {
                 className="buy_crypto_buttons"
                 initial="offscreen"
                 whileInView="onscreen"
-                viewport={{ once: true, amount: 0.8 }}
+                viewport={{ once: true, amount: 0.5 }}
               >
                 <motion.div variants={fromDownButtonVarients}>
                   <button>Buy Diam</button>
@@ -229,7 +222,7 @@ export default function Welcome() {
             style={{ marginBottom: "-10vh" }}
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <motion.div className="div" variants={fromRightVarients}>
               <img
@@ -244,7 +237,7 @@ export default function Welcome() {
             className="section_right"
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <motion.div variants={fromLeftVarients}>
               <img src="https://www.stellarx.com/c139ba43b42ec775c153.png"></img>

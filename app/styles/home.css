@@ -1,0 +1,194 @@
+.home {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  flex: 0.085;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 0px;
+  position: sticky;
+  top: 0;
+  background-color: rgb(24, 24, 33);
+  z-index: 1000;
+  justify-content: space-between;
+}
+
+.header_left {
+  display: flex;
+  flex: 0.3;
+  height: 100%;
+  align-items: center;
+  gap: 2vw;
+}
+
+.svg_container svg path {
+  fill: white;
+  transition: fill 0.3s ease;
+}
+
+.svg_container svg:hover path {
+  fill: rgb(22, 162, 184);
+}
+
+.svg_container {
+  cursor: pointer;
+}
+
+.home_nav {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  color: white;
+}
+
+.home_nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex-grow: 1;
+}
+
+.home_nav li {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 5rem;
+  color: rgb(255, 255, 255);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 0px 16px;
+  white-space: nowrap;
+}
+
+.home_nav a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 50px;
+  line-height: 50px;
+  white-space: nowrap;
+}
+.header_right {
+  display: flex;
+  flex: 0.3;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main_section {
+  display: flex;
+  flex: 0.915;
+  width: 100%;
+}
+
+.active {
+  color: red;
+}
+
+.address_box {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex: 0.4;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.address_box span {
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
+
+.identicon {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgb(49, 49, 71);
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.address_box:hover .identicon {
+  border: 2px solid rgb(22, 162, 184);
+}
+
+.address_box:hover span {
+  color: rgb(22, 162, 184);
+}
+
+.button_box {
+  flex: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.money_button {
+  flex: 0.5;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+
+  background: linear-gradient(
+      115deg,
+      rgb(255, 224, 138) 50%,
+      rgb(255, 217, 112) 50%
+    )
+    left bottom / 100% 100%;
+  color: rgb(49, 49, 71);
+  font-size: 0.75rem;
+  line-height: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.1563rem;
+  padding: 24px 0px;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  transition: background-position 0.15s ease 0s, background-size 0.15s ease 0s;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  border: none;
+}
+
+.money_button:nth-of-type(2) {
+  background: linear-gradient(
+      115deg,
+      rgb(22, 162, 184) 50%,
+      rgb(10, 147, 168) 50%
+    )
+    left bottom / 100% 100%;
+}
+
+.money_button:hover {
+  background-position: left bottom;
+  background-size: 300% 100%;
+}
