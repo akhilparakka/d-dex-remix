@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet } from "@remix-run/react";
 import homeCssRef from "../styles/home.css?url";
 import MinidenticonImg from "../components/minidenticon";
+import { useEffect, useState } from "react";
 
 export const links = () => [{ rel: "stylesheet", href: homeCssRef }];
 
@@ -12,15 +13,20 @@ const homeNavbar = [
 ];
 
 export default function Home() {
-  const storedPublicKey = JSON.parse(localStorage.getItem("diam_publicKeys"))[0]
-    .diamPublicKey;
+  const [storedPublicKey, setStoredPublicKey] = useState("");
+
+  useEffect(() => {
+    setStoredPublicKey(
+      JSON.parse(localStorage.getItem("diam_publicKeys"))[0].diamPublicKey
+    );
+  }, []);
 
   return (
     <div className="home">
       <header className="header">
         <div className="header_left">
           <div className="svg_container">
-            <Link to="/home">
+            <Link to="/home/markets">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="123"
@@ -35,7 +41,14 @@ export default function Home() {
             <ul>
               {homeNavbar.map((nav, index) => (
                 <li key={index}>
-                  <NavLink to={nav.route}>{nav.name}</NavLink>
+                  <NavLink
+                    to={nav.route}
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "active" : ""
+                    }
+                  >
+                    {nav.name}
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -56,9 +69,7 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <div className="main_section">
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 }

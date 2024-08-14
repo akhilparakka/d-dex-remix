@@ -20,7 +20,7 @@ export default function Welcome() {
     const resp = await window.diam.connect();
     if (resp.status === 200) {
       localStorage.setItem("diam_publicKeys", JSON.stringify(resp.message));
-      navigate("/home");
+      navigate("/home/markets");
     }
   };
 
