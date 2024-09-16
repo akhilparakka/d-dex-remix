@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "node ./server.js",
     "start": "cross-env NODE_ENV=production node ./server.js",
-    "build": "remix build"
+    "build": "remix vite:build"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.10.3",
