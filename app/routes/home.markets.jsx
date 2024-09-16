@@ -1,6 +1,7 @@
 import { Await, defer, useLoaderData } from "@remix-run/react";
 import { Suspense } from "react";
 import marketsCssRef from "../styles/markets.css?url";
+import MarketTable from "../components/marketTable";
 export const links = () => [{ rel: "stylesheet", href: marketsCssRef }];
 
 export async function loader() {
@@ -53,9 +54,13 @@ export default function Markets() {
           </div>
           <Suspense fallback={<Loading />}>
             <Await resolve={data}>
-              {/* {(resolvedData) => {
-                return <div>{JSON.stringify(resolvedData, null, 2)}</div>;
-              }} */}
+              {(resolvedData) => {
+                return (
+                  <div className="market_table">
+                    <MarketTable data={resolvedData.results} />
+                  </div>
+                );
+              }}
             </Await>
           </Suspense>
         </div>

@@ -1,0 +1,1 @@
+import{d as t,k as d}from"/build/_shared/chunk-VSATOKVW.js";var e=t(d(),1);function r(){return(0,e.jsx)("div",{style:{width:"100%",height:"100%",backgroundColor:"red",display:"flex",alignItems:"center"},children:(0,e.jsx)("h1",{children:"Swap"})})}export{r as default};
